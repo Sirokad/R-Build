@@ -21,7 +21,7 @@
 const file=(name,description,url=null)=>({type:'file',name,description,url});
 const folder=(name,description,children)=>({type:'folder',name,description,children});
 const library=[
- file('Business Card','Corporate business card',null),
+ file('Business Card','Corporate business card','./business-card.pdf'),
  file('Company Brochure','Company overview and capabilities',null),
  folder('Expamet','Company and product literature',[
   file('Expamet Brochure','Expamet product brochure',null)
