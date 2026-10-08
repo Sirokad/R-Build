@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>R-Build Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>R-Build Portfolio | Document Center</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,7 +52,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 88px
+      min-height: 88px;
+      gap: 15px
     }
 
     .brand {
@@ -63,23 +64,24 @@
       color: var(--navy)
     }
 
-    .logo {
-      background: var(--navy);
-      color: white;
-      padding: 1px;
-      border-radius: 1px;
-      font-size: 23px
+    .company-logo {
+      height: 55px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain
     }
 
     .brand strong {
       display: block;
-      letter-spacing: .07em
+      letter-spacing: .04em
     }
 
     .brand small {
+      display: block;
       font-size: 11px;
       color: var(--gray);
-      letter-spacing: .12em
+      letter-spacing: .1em;
+      margin-top: 3px
     }
 
     .top-right {
@@ -152,12 +154,9 @@
       box-shadow: 0 12px 28px #152e4333
     }
 
-    .search svg {
-      flex-shrink: 0
-    }
-
     .search input {
       width: 100%;
+      min-width: 0;
       padding: 12px 4px;
       border: 0;
       outline: 0;
@@ -347,8 +346,7 @@
       border-radius: 14px;
       background: white;
       padding: 18px 20px;
-      color: var(--navy);
-      transition: box-shadow .2s
+      color: var(--navy)
     }
 
     .file-row:hover {
@@ -369,7 +367,8 @@
 
     .file-info strong {
       display: block;
-      font-size: 15px
+      font-size: 15px;
+      overflow-wrap: anywhere
     }
 
     .file-info small {
@@ -439,12 +438,12 @@
     .modal {
       position: fixed;
       inset: 0;
-      background: #0c2030b8;
+      background: #0c2030c9;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 22px;
-      z-index: 10
+      z-index: 1000
     }
 
     .modal.open {
@@ -455,7 +454,7 @@
       background: white;
       border-radius: 16px;
       width: min(980px, 100%);
-      height: min(85vh, 800px);
+      height: min(85dvh, 800px);
       display: flex;
       flex-direction: column;
       overflow: hidden
@@ -471,6 +470,7 @@
 
     .modal-head strong {
       flex: 1;
+      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap
@@ -495,16 +495,17 @@
     .modal iframe {
       border: 0;
       width: 100%;
-      flex: 1
+      flex: 1;
+      min-height: 0
     }
 
-    .placeholder {
-      padding: 50px 25px;
-      text-align: center;
+    .modal-fallback {
+      padding: 8px 20px;
+      font-size: 12px;
       color: var(--muted)
     }
 
-    .placeholder h3 {
+    .modal-fallback a {
       color: var(--navy)
     }
 
@@ -515,11 +516,24 @@
       }
 
       .topbar .shell {
-        height: 74px
+        min-height: 74px
       }
 
       .top-right {
         display: none
+      }
+
+      .company-logo {
+        height: 42px;
+        max-width: 115px
+      }
+
+      .brand strong {
+        font-size: 13px
+      }
+
+      .brand small {
+        font-size: 9px
       }
 
       .hero .shell {
@@ -544,6 +558,7 @@
       }
 
       .help .note {
+        display: block;
         margin-top: 15px
       }
 
@@ -559,54 +574,36 @@
       .file-action {
         display: none
       }
-    }
 
-    .company-logo {
-      width: auto;
-      height: 55px;
-      max-width: 220px;
-      object-fit: contain;
-    }
+      .modal {
+        padding: 8px
+      }
 
-    .pdf-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
+      .modal-panel {
+        height: 95dvh
+      }
 
-    .pdf-modal-content {
-      position: relative;
-      width: 90%;
-      height: 90vh;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+      .modal-head {
+        padding: 10px;
+        gap: 6px
+      }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      z-index: 10;
-      background: #26445F;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
+      .modal-head a {
+        padding: 9px
+      }
+
+      .modal-head button {
+        padding: 9px
+      }
     }
   </style>
 </head>
 
 <body>
   <header class="topbar">
-    <div class="shell"><a class="brand" href="#" id="homeBrand"><span class="logo"><img src="./R-Build colored PNG.png"
-            alt="Company Logo" class="company-logo"></span><span><strong>R-Build Portfolio</strong><small>CORPORATE
-            DOCUMENT CENTER</small></span></a><span class="top-right">BRAND & PRODUCT RESOURCES</span></div>
+    <div class="shell"><a class="brand" href="#" id="homeBrand"><img class="company-logo"
+          src="./R-Build colored PNG.png" alt="R-Build Logo"><span><strong>R-Build Portfolio</strong><small>CORPORATE
+            DOCUMENT CENTER</small></span></a><span class="top-right">BRAND &amp; PRODUCT RESOURCES</span></div>
   </header>
   <section class="hero">
     <div class="shell">
@@ -614,12 +611,9 @@
       <h1>Our Resources.<br>Your Access.</h1>
       <p>Explore our company materials, product brochures and technical datasheets — all beautifully organized in one
         convenient destination.</p>
-      <div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#939598" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m16 16 5 5" />
-        </svg><input id="search" placeholder="Search documents and directories..."
-          aria-label="Search documents and directories"><button id="clearSearch" title="Clear search">Clear</button>
-      </div>
+      <div class="search"><span aria-hidden="true" style="color:#939598;font-size:22px">⌕</span><input id="search"
+          placeholder="Search documents and directories..." aria-label="Search documents and directories"><button
+          id="clearSearch" type="button">Clear</button></div>
       <div class="stats"><span><b>2</b> Corporate files</span><span><b>2</b> Product collections</span><span><b>21</b>
           Total documents</span></div>
     </div>
@@ -645,68 +639,56 @@
     <div class="shell"><span>© 2026 R-Build Resource Library</span><span>Corporate Documents · Product Brochures ·
         Datasheets</span></div>
   </footer>
-  <div id="pdfModal" class="pdf-modal">
-    <div class="pdf-modal-content">
-      <button onclick="closePDF()" class="close-btn">
-      
-      </button>
-
-      <iframe id="pdfFrame" title="PDF Preview" width="100%" height="100%">
-      </iframe>
+  <div class="modal" id="pdfModal" role="dialog" aria-modal="true" aria-label="PDF preview">
+    <div class="modal-panel">
+      <div class="modal-head"><strong id="pdfTitle">Document preview</strong><a id="pdfOpen" href="#" target="_blank"
+          rel="noopener">Open PDF ↗</a><button id="closeModal" type="button" aria-label="Close preview">✕</button></div>
+      <iframe id="pdfFrame" title="PDF Preview"></iframe>
+      <div class="modal-fallback">Preview not displaying? <a id="pdfFallback" href="#" target="_blank"
+          rel="noopener">Open the PDF directly</a>.</div>
     </div>
   </div>
   <script>
-    // Replace each null URL with the actual public or authenticated document URL.
-    // For SharePoint, use direct file URLs where access permissions allow viewing.
+    // Keep the PDF files beside this HTML file, or update the relative paths below.
     const file = (name, description, url = null) => ({ type: 'file', name, description, url });
     const folder = (name, description, children) => ({ type: 'folder', name, description, children });
     const library = [
       file('Business Card', 'Corporate business card', './business-card.pdf'),
       file('R-Build Brochure', 'Company overview and capabilities', './R-Build Generic Brochure.pdf'),
       folder('Expamet', 'Company and product literature', [
-        file('Expamet Brochure', 'Expamet product brochure', './Expamet Brochure Block work & Plastering Accessories to print.pdf'),
+        file('Expamet Brochure', 'Expamet product brochure', './Expamet Brochure Block work & Plastering Accessories to print.pdf')
       ]),
       folder('K5', 'Product brochures and technical resources', [
         file('K5 Brochure 01', 'K5 product brochure', null),
         file('K5 Brochure 02', 'K5 product brochure', null),
         file('K5 Brochure 03', 'K5 product brochure', null),
-        folder('K5 Datasheets', 'Technical specifications and product datasheets',
-          Array.from({ length: 15 }, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
+        folder('K5 Datasheets', 'Technical specifications and product datasheets', Array.from({ length: 15 }, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
       ])
     ];
-    let path = [];
-    const $ = id => document.getElementById(id);
+    let path = []; const $ = id => document.getElementById(id);
     const current = () => path.reduce((nodes, index) => nodes[index].children, library);
     const fileCount = nodes => nodes.reduce((n, x) => n + (x.type === 'file' ? 1 : fileCount(x.children)), 0);
-    const icon = x => x.type === 'folder' ? '📁' : x.name === 'Business Card' ? '▤' : '▧';
     function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e }
     function navigate(index) { path.push(index); $('search').value = ''; render(); window.scrollTo({ top: 320, behavior: 'smooth' }) }
     function breadcrumb() { const nav = $('crumbs'); nav.replaceChildren(); const add = (name, depth) => { const b = el('button', '', name); b.onclick = () => { path = path.slice(0, depth); $('search').value = ''; render() }; nav.append(b) }; add('Home', 0); let nodes = library; path.forEach((index, i) => { nav.append(el('span', '', '›')); add(nodes[index].name, i + 1); nodes = nodes[index].children }) }
-    function render() { breadcrumb(); const nodes = current(), query = $('search').value.trim().toLowerCase(); const matches = nodes.map((item, index) => ({ item, index })).filter(({ item }) => (item.name + ' ' + item.description).toLowerCase().includes(query)); const atRoot = path.length === 0; $('heading').textContent = atRoot ? 'Browse Our Resources' : path.reduce((nodes, index) => nodes[index].children, library)?.name || 'Documents'; if (!atRoot) { let n = library; for (const i of path) { $('heading').textContent = n[i].name; n = n[i].children } } $('subheading').textContent = atRoot ? 'Select a document or explore a collection.' : 'Browse documents and subdirectories.'; $('count').textContent = matches.length + ' items'; const content = $('content'); content.replaceChildren(); if (!matches.length) { content.append(el('div', 'empty', 'No matching items found in this directory.')); return } function section(label, items, asGrid) { if (!items.length) return; content.append(el('div', 'section-label', label)); const wrap = el('div', asGrid ? 'grid' : 'file-list'); items.forEach(({ item, index }) => { if (item.type === 'folder') { const card = el('button', 'card'); card.innerHTML = '<div class="card-top"><div class="card-icon">📁</div><span class="card-index">COLLECTION</span></div>'; card.append(el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', `${fileCount(item.children)} files`), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => navigate(index); wrap.append(card) } else if (asGrid) { const card = el('button', 'card'); card.innerHTML = '<div class="card-top"><div class="card-icon">▧</div><span class="card-index">DOCUMENT</span></div>'; card.append(el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', 'Document · Preview'), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => openFile(item); wrap.append(card) } else { const row = el('button', 'file-row'); row.append(el('span', 'file-icon', '▧')); const info = el('span', 'file-info'); info.append(el('strong', '', item.name), el('small', '', item.description)); row.append(info, el('span', 'file-action', 'Preview ↗')); row.onclick = () => openFile(item); wrap.append(row) } }); content.append(wrap) } if (atRoot) { section('CORPORATE ESSENTIALS', matches.filter(x => x.item.type === 'file'), true); section('PRODUCT COLLECTIONS', matches.filter(x => x.item.type === 'folder'), true) } else { section('DIRECTORIES', matches.filter(x => x.item.type === 'folder'), true); section('DOCUMENTS', matches.filter(x => x.item.type === 'file'), false) } }
-    function openPDF(pdfUrl) {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(
-        navigator.userAgent
-      );
-
-      if (isMobile) {
-        // Open PDF using the phone's native PDF viewer
-        window.open(pdfUrl, "_blank");
-        return;
-      }
-
-      // Desktop: display PDF inside modal
-      const modal = document.getElementById("pdfModal");
-      const iframe = document.getElementById("pdfFrame");
-
-      iframe.src = pdfUrl;
-      modal.style.display = "flex";
+    function section(content, label, items, asGrid) { if (!items.length) return; content.append(el('div', 'section-label', label)); const wrap = el('div', asGrid ? 'grid' : 'file-list'); items.forEach(({ item, index }) => { if (item.type === 'folder') { const card = el('button', 'card'); const top = el('div', 'card-top'); top.append(el('div', 'card-icon', '📁'), el('span', 'card-index', 'COLLECTION')); card.append(top, el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', `${fileCount(item.children)} files`), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => navigate(index); wrap.append(card) } else if (asGrid) { const card = el('button', 'card'); const top = el('div', 'card-top'); top.append(el('div', 'card-icon', '▧'), el('span', 'card-index', 'DOCUMENT')); card.append(top, el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', item.url ? 'Document · Preview' : 'Coming soon'), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => openFile(item); wrap.append(card) } else { const row = el('button', 'file-row'); row.append(el('span', 'file-icon', '▧')); const info = el('span', 'file-info'); info.append(el('strong', '', item.name), el('small', '', item.description)); row.append(info, el('span', 'file-action', item.url ? 'Preview ↗' : 'Coming soon')); row.onclick = () => openFile(item); wrap.append(row) } }); content.append(wrap) }
+    function render() { breadcrumb(); const nodes = current(), query = $('search').value.trim().toLowerCase(); const matches = nodes.map((item, index) => ({ item, index })).filter(({ item }) => (item.name + ' ' + item.description).toLowerCase().includes(query)); const atRoot = path.length === 0; let heading = 'Browse Our Resources'; if (!atRoot) { let n = library; for (const i of path) { heading = n[i].name; n = n[i].children } } $('heading').textContent = heading; $('subheading').textContent = atRoot ? 'Select a document or explore a collection.' : 'Browse documents and subdirectories.'; $('count').textContent = matches.length + ' items'; const content = $('content'); content.replaceChildren(); if (!matches.length) { content.append(el('div', 'empty', 'No matching items found in this directory.')); return } if (atRoot) { section(content, 'CORPORATE ESSENTIALS', matches.filter(x => x.item.type === 'file'), true); section(content, 'PRODUCT COLLECTIONS', matches.filter(x => x.item.type === 'folder'), true) } else { section(content, 'DIRECTORIES', matches.filter(x => x.item.type === 'folder'), true); section(content, 'DOCUMENTS', matches.filter(x => x.item.type === 'file'), false) } }
+    function openFile(item) { if (!item.url) { alert('This document has not been added yet.'); return } openPDF(item.url, item.name) }
+    function openPDF(pdfUrl, name = 'PDF Preview') {
+      // Mobile browsers are unreliable at rendering PDF files in iframes.
+      // Navigate directly from the click so mobile popup blockers do not interfere.
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isMobile) { window.location.href = pdfUrl; return }
+      $('pdfTitle').textContent = name; $('pdfFrame').src = pdfUrl; $('pdfOpen').href = pdfUrl; $('pdfFallback').href = pdfUrl; $('pdfModal').classList.add('open'); document.body.style.overflow = 'hidden'; $('closeModal').focus();
     }
-    function closePDF() {
-      document.getElementById("pdfModal").style.display = "none";
-      document.getElementById("pdfFrame").src = "";
-    }
-    function closeModal() { $('modal').classList.remove('open'); $('modalBody').replaceChildren() }
-    $('search').addEventListener('input', render); $('clearSearch').onclick = () => { $('search').value = ''; render() }; $('closeModal').onclick = closeModal; $('modal').onclick = e => { if (e.target === $('modal')) closeModal() }; document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() }); $('homeBrand').onclick = e => { e.preventDefault(); path = []; $('search').value = ''; render() }; render();
+    function closePDF() { $('pdfModal').classList.remove('open'); $('pdfFrame').removeAttribute('src'); document.body.style.overflow = '' }
+    $('search').addEventListener('input', render);
+    $('clearSearch').addEventListener('click', () => { $('search').value = ''; render() });
+    $('closeModal').addEventListener('click', closePDF);
+    $('pdfModal').addEventListener('click', e => { if (e.target === $('pdfModal')) closePDF() });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDF() });
+    $('homeBrand').addEventListener('click', e => { e.preventDefault(); path = []; $('search').value = ''; render() });
+    render();
   </script>
 </body>
 
