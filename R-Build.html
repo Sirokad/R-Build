@@ -66,13 +66,8 @@
     .logo {
       background: var(--navy);
       color: white;
-<<<<<<< HEAD
       padding: 1px;
       border-radius: 1px;
-=======
-      padding: 13px;
-      border-radius: 13px;
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
       font-size: 23px
     }
 
@@ -572,7 +567,6 @@
       max-width: 220px;
       object-fit: contain;
     }
-<<<<<<< HEAD
 
     .pdf-modal {
       display: none;
@@ -605,8 +599,6 @@
       border-radius: 6px;
       cursor: pointer;
     }
-=======
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
   </style>
 </head>
 
@@ -650,37 +642,24 @@
     </div>
   </main>
   <footer class="footer">
-    <div class="shell"><span>© 2026 Corporate Resource Library</span><span>Corporate Documents · Product Brochures ·
+    <div class="shell"><span>© 2026 R-Build Resource Library</span><span>Corporate Documents · Product Brochures ·
         Datasheets</span></div>
   </footer>
-<<<<<<< HEAD
   <div id="pdfModal" class="pdf-modal">
     <div class="pdf-modal-content">
       <button onclick="closePDF()" class="close-btn">
-        &times;
+      
       </button>
 
       <iframe id="pdfFrame" title="PDF Preview" width="100%" height="100%">
       </iframe>
-=======
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-panel">
-      <div class="modal-head"><strong id="modalTitle">Document preview</strong><a id="download" download target="_blank"
-          rel="noopener">Download ↧</a><button id="closeModal" aria-label="Close preview">✕</button></div>
-      <div id="modalBody" style="display:flex;flex:1;min-height:0;flex-direction:column"></div>
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
     </div>
   </div>
   <script>
     // Replace each null URL with the actual public or authenticated document URL.
     // For SharePoint, use direct file URLs where access permissions allow viewing.
-<<<<<<< HEAD
     const file = (name, description, url = null) => ({ type: 'file', name, description, url });
     const folder = (name, description, children) => ({ type: 'folder', name, description, children });
-=======
-    const file = (name, description, url = null) => ({type: 'file', name, description, url});
-    const folder = (name, description, children) => ({type: 'folder', name, description, children});
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
     const library = [
       file('Business Card', 'Corporate business card', './business-card.pdf'),
       file('R-Build Brochure', 'Company overview and capabilities', './R-Build Generic Brochure.pdf'),
@@ -692,11 +671,7 @@
         file('K5 Brochure 02', 'K5 product brochure', null),
         file('K5 Brochure 03', 'K5 product brochure', null),
         folder('K5 Datasheets', 'Technical specifications and product datasheets',
-<<<<<<< HEAD
           Array.from({ length: 15 }, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
-=======
-          Array.from({length: 15}, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
       ])
     ];
     let path = [];
@@ -704,7 +679,6 @@
     const current = () => path.reduce((nodes, index) => nodes[index].children, library);
     const fileCount = nodes => nodes.reduce((n, x) => n + (x.type === 'file' ? 1 : fileCount(x.children)), 0);
     const icon = x => x.type === 'folder' ? '📁' : x.name === 'Business Card' ? '▤' : '▧';
-<<<<<<< HEAD
     function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e }
     function navigate(index) { path.push(index); $('search').value = ''; render(); window.scrollTo({ top: 320, behavior: 'smooth' }) }
     function breadcrumb() { const nav = $('crumbs'); nav.replaceChildren(); const add = (name, depth) => { const b = el('button', '', name); b.onclick = () => { path = path.slice(0, depth); $('search').value = ''; render() }; nav.append(b) }; add('Home', 0); let nodes = library; path.forEach((index, i) => { nav.append(el('span', '', '›')); add(nodes[index].name, i + 1); nodes = nodes[index].children }) }
@@ -737,16 +711,3 @@
 </body>
 
 </html>
-=======
-    function el(tag, cls, text) {const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e}
-    function navigate(index) {path.push(index); $('search').value = ''; render(); window.scrollTo({top: 320, behavior: 'smooth'})}
-    function breadcrumb() {const nav = $('crumbs'); nav.replaceChildren(); const add = (name, depth) => {const b = el('button', '', name); b.onclick = () => {path = path.slice(0, depth); $('search').value = ''; render()}; nav.append(b)}; add('Home', 0); let nodes = library; path.forEach((index, i) => {nav.append(el('span', '', '›')); add(nodes[index].name, i + 1); nodes = nodes[index].children})}
-    function render() {breadcrumb(); const nodes = current(), query = $('search').value.trim().toLowerCase(); const matches = nodes.map((item, index) => ({item, index})).filter(({item}) => (item.name + ' ' + item.description).toLowerCase().includes(query)); const atRoot = path.length === 0; $('heading').textContent = atRoot ? 'Browse Our Resources' : path.reduce((nodes, index) => nodes[index].children, library)?.name || 'Documents'; if (!atRoot) {let n = library; for (const i of path) {$('heading').textContent = n[i].name; n = n[i].children} } $('subheading').textContent = atRoot ? 'Select a document or explore a collection.' : 'Browse documents and subdirectories.'; $('count').textContent = matches.length + ' items'; const content = $('content'); content.replaceChildren(); if (!matches.length) {content.append(el('div', 'empty', 'No matching items found in this directory.')); return } function section(label, items, asGrid) {if (!items.length) return; content.append(el('div', 'section-label', label)); const wrap = el('div', asGrid ? 'grid' : 'file-list'); items.forEach(({item, index}) => {if (item.type === 'folder') {const card = el('button', 'card'); card.innerHTML = '<div class="card-top"><div class="card-icon">📁</div><span class="card-index">COLLECTION</span></div>'; card.append(el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', `${fileCount(item.children)} files`), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => navigate(index); wrap.append(card)} else if (asGrid) {const card = el('button', 'card'); card.innerHTML = '<div class="card-top"><div class="card-icon">▧</div><span class="card-index">DOCUMENT</span></div>'; card.append(el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', 'Document · Preview'), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => openFile(item); wrap.append(card)} else {const row = el('button', 'file-row'); row.append(el('span', 'file-icon', '▧')); const info = el('span', 'file-info'); info.append(el('strong', '', item.name), el('small', '', item.description)); row.append(info, el('span', 'file-action', 'Preview ↗')); row.onclick = () => openFile(item); wrap.append(row)} }); content.append(wrap)} if (atRoot) {section('CORPORATE ESSENTIALS', matches.filter(x => x.item.type === 'file'), true); section('PRODUCT COLLECTIONS', matches.filter(x => x.item.type === 'folder'), true)} else {section('DIRECTORIES', matches.filter(x => x.item.type === 'folder'), true); section('DOCUMENTS', matches.filter(x => x.item.type === 'file'), false)} }
-    function openFile(item) {$('modalTitle').textContent = item.name; const body = $('modalBody'); body.replaceChildren(); const download = $('download'); if (item.url) {download.style.display = 'inline-block'; download.href = item.url; const iframe = el('iframe'); iframe.src = item.url; iframe.title = item.name; body.append(iframe)} else {download.style.display = 'none'; const box = el('div', 'placeholder'); box.append(el('h3', '', item.name), el('p', '', 'Document placeholder — set its URL in the library JavaScript to enable preview and download.')); body.append(box)} $('modal').classList.add('open')}
-    function closeModal() {$('modal').classList.remove('open'); $('modalBody').replaceChildren()}
-    $('search').addEventListener('input', render); $('clearSearch').onclick = () => {$('search').value = ''; render()}; $('closeModal').onclick = closeModal; $('modal').onclick = e => {if (e.target === $('modal')) closeModal()}; document.addEventListener('keydown', e => {if (e.key === 'Escape') closeModal()}); $('homeBrand').onclick = e => {e.preventDefault(); path = []; $('search').value = ''; render()}; render();
-  </script>
-</body>
-
-</html>
->>>>>>> 513c9b3775d4cd64c003f8d8b0f0762e2e52c058
