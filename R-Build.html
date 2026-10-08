@@ -1221,13 +1221,15 @@
 
       folder('K5', 'Product brochures and technical resources', [
 
-        file('K5 Brochure 01', 'K5 product brochure', './1 K5 Brochure Gypsum Board Accessories to print.pdf'),
+        file('K5 Brochure Gypsum Board Accessories', 'K5 product brochure', './1 K5 Brochure Gypsum Board Accessories to print.pdf'),
 
-        file('K5 Brochure 02', 'K5 product brochure', './k5 brochure V4 pages.pdf'),
+        file('K5 Brochure', 'K5 product brochure', './k5 brochure V4 pages.pdf'),
 
-        file('K5 Brochure 03', 'K5 product brochure', 'Expamet Brochure Block work & Plastering Accessories to print.pdf'),
+        file('K5 Brochure C-CHANNELS, BLOCK WORK & PLASTERING ACCESSORIES', 'K5 product brochure', './2 K5 Brochure C-CHANNELS, BLOCK WORK & PLASTERING ACCESSORIES to print.pdf'),
 
-        folder('K5 Datasheets', 'Technical specifications and product datasheets', Array.from({ length: 15 }, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
+        folder('K5 Datasheets', 'Technical specifications and product datasheets', [
+
+         file('K5 Datasheet C CHANNEL 21 1.4mm', 'K5 Datasheet', './K5 - Data Sheets - C CHANNEL 21 1.4 MM.pdf'),])
 
       ])
 
