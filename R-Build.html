@@ -1,694 +1,1352 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>R-Build Portfolio | Document Center</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
+
       --navy: #26445F;
+
       --gray: #939598;
+
       --bg: #f4f6f8;
+
       --line: #e2e8ed;
+
       --muted: #738394
     }
 
+
+
     * {
+
       box-sizing: border-box
     }
 
+
+
     body {
+
       margin: 0;
+
       font-family: Inter, Arial, sans-serif;
+
       color: var(--navy);
+
       background: var(--bg)
     }
 
+
+
     button,
+
     input {
+
       font: inherit
     }
 
+
+
     button {
+
       cursor: pointer
     }
 
+
+
     .shell {
+
       max-width: 1200px;
+
       margin: auto;
+
       padding: 0 28px
     }
 
+
+
     .topbar {
+
       background: white;
+
       border-bottom: 1px solid var(--line)
     }
 
+
+
     .topbar .shell {
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       min-height: 88px;
+
       gap: 15px
     }
 
+
+
     .brand {
+
       display: flex;
+
       align-items: center;
+
       gap: 14px;
+
       text-decoration: none;
+
       color: var(--navy)
     }
 
+
+
     .company-logo {
+
       height: 55px;
+
       width: auto;
+
       max-width: 180px;
+
       object-fit: contain
     }
 
+
+
     .brand strong {
+
       display: block;
+
       letter-spacing: .04em
     }
 
+
+
     .brand small {
+
       display: block;
+
       font-size: 11px;
+
       color: var(--gray);
+
       letter-spacing: .1em;
+
       margin-top: 3px
     }
 
+
+
     .top-right {
+
       font-size: 12px;
+
       color: var(--gray);
+
       letter-spacing: .08em
     }
 
+
+
     .hero {
+
       background: linear-gradient(120deg, #26445F 0%, #345b78 65%, #52758d 100%);
+
       color: white;
+
       position: relative;
+
       overflow: hidden
     }
 
+
+
     .hero:after {
+
       content: "";
+
       position: absolute;
+
       width: 500px;
+
       height: 500px;
+
       border: 1px solid #ffffff1c;
+
       border-radius: 50%;
+
       right: -100px;
+
       top: -200px;
+
       box-shadow: 0 0 0 75px #ffffff08, 0 0 0 150px #ffffff06;
+
       pointer-events: none
     }
 
+
+
     .hero .shell {
+
       padding-top: 78px;
+
       padding-bottom: 75px;
+
       position: relative;
+
       z-index: 1
     }
 
+
+
     .eyebrow {
+
       font-size: 11px;
+
       letter-spacing: .2em;
+
       font-weight: 700;
+
       text-transform: uppercase
     }
 
+
+
     .hero .eyebrow {
+
       color: #d3e2ed
     }
 
+
+
     .hero h1 {
+
       font-size: clamp(35px, 5vw, 60px);
+
       line-height: 1.1;
+
       max-width: 700px;
+
       letter-spacing: -.05em;
+
       margin: 20px 0
     }
 
+
+
     .hero p {
+
       color: #dbe6ee;
+
       line-height: 1.75;
+
       max-width: 610px;
+
       margin-bottom: 30px
     }
 
+
+
     .search {
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
+
       background: white;
+
       padding: 9px 15px;
+
       border-radius: 14px;
+
       max-width: 650px;
+
       box-shadow: 0 12px 28px #152e4333
     }
 
+
+
     .search input {
+
       width: 100%;
+
       min-width: 0;
+
       padding: 12px 4px;
+
       border: 0;
+
       outline: 0;
+
       color: var(--navy);
+
       background: transparent
     }
 
+
+
     .search button {
+
       border: 0;
+
       background: #e9eef2;
+
       color: var(--navy);
+
       border-radius: 8px;
+
       padding: 9px 13px
     }
 
+
+
     .stats {
+
       display: flex;
+
       gap: 32px;
+
       flex-wrap: wrap;
+
       margin-top: 30px
     }
 
+
+
     .stats span {
+
       font-size: 13px;
+
       color: #e0e9f0
     }
 
+
+
     .stats b {
+
       color: white;
+
       margin-right: 6px;
+
       font-size: 17px
     }
 
+
+
     main.shell {
+
       padding-top: 45px;
+
       padding-bottom: 80px
     }
 
+
+
     .crumbs {
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
       flex-wrap: wrap;
+
       margin-bottom: 28px
     }
 
+
+
     .crumbs button {
+
       border: 0;
+
       background: transparent;
+
       color: var(--muted);
+
       padding: 4px 0
     }
 
+
+
     .crumbs button:last-child {
+
       color: var(--navy);
+
       font-weight: 700
     }
 
+
+
     .section-head {
+
       display: flex;
+
       align-items: end;
+
       justify-content: space-between;
+
       gap: 15px;
+
       margin-bottom: 22px
     }
 
+
+
     .section-head h2 {
+
       font-size: 29px;
+
       letter-spacing: -.04em;
+
       margin: 7px 0
     }
 
+
+
     .section-head p {
+
       margin: 0;
+
       color: var(--muted);
+
       font-size: 14px
     }
 
+
+
     .pill {
+
       border-radius: 50px;
+
       background: #e7edf1;
+
       padding: 10px 15px;
+
       color: var(--navy);
+
       font-size: 12px;
+
       font-weight: 700;
+
       white-space: nowrap
     }
 
+
+
     .section-label {
+
       font-size: 12px;
+
       letter-spacing: .11em;
+
       font-weight: 700;
+
       margin: 34px 0 16px
     }
 
+
+
     .grid {
+
       display: grid;
+
       grid-template-columns: repeat(2, minmax(0, 1fr));
+
       gap: 20px
     }
 
+
+
     .card {
+
       background: white;
+
       border: 1px solid var(--line);
+
       border-radius: 18px;
+
       padding: 25px;
+
       text-align: left;
+
       transition: transform .2s, box-shadow .2s, border-color .2s;
+
       width: 100%;
+
       color: inherit
     }
 
+
+
     .card:hover {
+
       transform: translateY(-4px);
+
       box-shadow: 0 18px 36px #26445f14;
+
       border-color: #b5c7d4
     }
 
+
+
     .card-top {
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: flex-start
     }
 
+
+
     .card-icon {
+
       height: 64px;
+
       width: 64px;
+
       display: grid;
+
       place-items: center;
+
       background: #eaf0f4;
+
       border-radius: 16px;
+
       font-size: 31px
     }
 
+
+
     .card-index {
+
       color: #b5c0c9;
+
       font-size: 12px
     }
 
+
+
     .card h3 {
+
       font-size: 20px;
+
       letter-spacing: -.025em;
+
       margin: 24px 0 10px
     }
 
+
+
     .card p {
+
       font-size: 13px;
+
       color: var(--muted);
+
       line-height: 1.7;
+
       min-height: 40px;
+
       margin: 0 0 25px
     }
 
+
+
     .card-foot {
+
       border-top: 1px solid var(--line);
+
       padding-top: 18px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       font-size: 12px;
+
       color: var(--gray)
     }
 
+
+
     .circle-arrow {
+
       background: var(--navy);
+
       color: white;
+
       border-radius: 50%;
+
       height: 32px;
+
       width: 32px;
+
       display: grid;
+
       place-items: center;
+
       font-size: 17px
     }
 
+
+
     .file-list {
+
       display: grid;
+
       gap: 12px
     }
 
+
+
     .file-row {
+
       width: 100%;
+
       display: flex;
+
       align-items: center;
+
       gap: 16px;
+
       text-align: left;
+
       border: 1px solid var(--line);
+
       border-radius: 14px;
+
       background: white;
+
       padding: 18px 20px;
+
       color: var(--navy)
     }
 
+
+
     .file-row:hover {
+
       box-shadow: 0 8px 20px #26445f12
     }
 
+
+
     .file-icon {
+
       background: #eaf0f4;
+
       border-radius: 12px;
+
       padding: 15px;
+
       font-size: 23px
     }
 
+
+
     .file-info {
+
       flex: 1;
+
       min-width: 0
     }
 
+
+
     .file-info strong {
+
       display: block;
+
       font-size: 15px;
+
       overflow-wrap: anywhere
     }
 
+
+
     .file-info small {
+
       display: block;
+
       color: var(--gray);
+
       font-size: 12px;
+
       margin-top: 6px
     }
 
+
+
     .file-action {
+
       font-size: 12px;
+
       font-weight: 700;
+
       color: var(--navy)
     }
 
+
+
     .empty {
+
       background: white;
+
       border: 1px dashed #bdcbd6;
+
       border-radius: 16px;
+
       padding: 40px;
+
       text-align: center;
+
       color: var(--muted)
     }
 
+
+
     .help {
+
       background: var(--navy);
+
       border-radius: 20px;
+
       padding: 30px;
+
       margin-top: 48px;
+
       color: white;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 20px
     }
 
+
+
     .help h3 {
+
       margin: 0 0 8px;
+
       font-size: 22px
     }
 
+
+
     .help p {
+
       color: #d3e1eb;
+
       margin: 0;
+
       font-size: 13px
     }
 
+
+
     .help .note {
+
       font-size: 12px;
+
       color: #d5e2ec
     }
 
+
+
     .footer {
+
       background: white;
+
       border-top: 1px solid var(--line);
+
       padding: 26px 0;
+
       color: var(--gray);
+
       font-size: 12px
     }
 
+
+
     .footer .shell {
+
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px
     }
 
+
+
     .modal {
+
       position: fixed;
+
       inset: 0;
+
       background: #0c2030c9;
+
       display: none;
+
       align-items: center;
+
       justify-content: center;
+
       padding: 22px;
+
       z-index: 1000
     }
 
+
+
     .modal.open {
+
       display: flex
     }
 
+
+
     .modal-panel {
+
       background: white;
+
       border-radius: 16px;
+
       width: min(980px, 100%);
+
       height: min(85dvh, 800px);
+
       display: flex;
+
       flex-direction: column;
+
       overflow: hidden
     }
 
+
+
     .modal-head {
+
       padding: 15px 20px;
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
+
       border-bottom: 1px solid var(--line)
     }
 
+
+
     .modal-head strong {
+
       flex: 1;
+
       min-width: 0;
+
       overflow: hidden;
+
       text-overflow: ellipsis;
+
       white-space: nowrap
     }
 
+
+
     .modal-head a {
+
       background: var(--navy);
+
       color: white;
+
       text-decoration: none;
+
       padding: 10px 16px;
+
       border-radius: 9px;
+
       font-size: 12px
     }
 
+
+
     .modal-head button {
+
       border: 0;
+
       background: #eaf0f4;
+
       padding: 10px 14px;
+
       border-radius: 9px
     }
 
+
+
     .modal iframe {
+
       border: 0;
+
       width: 100%;
+
       flex: 1;
+
       min-height: 0
     }
 
+
+
     .modal-fallback {
+
       padding: 8px 20px;
+
       font-size: 12px;
+
       color: var(--muted)
     }
 
+
+
     .modal-fallback a {
+
       color: var(--navy)
     }
 
+
+
     @media(max-width:650px) {
+
       .shell {
+
         padding-left: 18px;
+
         padding-right: 18px
       }
 
+
+
       .topbar .shell {
+
         min-height: 74px
       }
 
+
+
       .top-right {
+
         display: none
       }
 
+
+
       .company-logo {
+
         height: 42px;
+
         max-width: 115px
       }
 
+
+
       .brand strong {
+
         font-size: 13px
       }
 
+
+
       .brand small {
+
         font-size: 9px
       }
 
+
+
       .hero .shell {
+
         padding-top: 55px;
+
         padding-bottom: 55px
       }
 
+
+
       .grid {
+
         grid-template-columns: 1fr
       }
 
+
+
       .section-head h2 {
+
         font-size: 24px
       }
 
+
+
       .card {
+
         padding: 21px
       }
 
+
+
       .help {
+
         display: block
       }
 
+
+
       .help .note {
+
         display: block;
+
         margin-top: 15px
       }
 
+
+
       .footer .shell {
+
         display: block
       }
 
+
+
       .footer .shell span {
+
         display: block;
+
         margin: 8px 0
       }
 
+
+
       .file-action {
+
         display: none
       }
 
+
+
       .modal {
+
         padding: 8px
       }
 
+
+
       .modal-panel {
+
         height: 95dvh
       }
 
+
+
       .modal-head {
+
         padding: 10px;
+
         gap: 6px
       }
 
+
+
       .modal-head a {
+
         padding: 9px
       }
+
+
 
       .modal-head button {
+
         padding: 9px
       }
+
     }
   </style>
+
 </head>
 
+
+
 <body>
+
   <header class="topbar">
+
     <div class="shell"><a class="brand" href="#" id="homeBrand"><img class="company-logo"
           src="./R-Build colored PNG.png" alt="R-Build Logo"><span><strong>R-Build Portfolio</strong><small>R-Build
+
             DOCUMENT CENTER</small></span></a><span class="top-right">BRAND &amp; PRODUCT RESOURCES</span></div>
+
   </header>
+
   <section class="hero">
+
     <div class="shell">
+
       <div class="eyebrow">Official Document Collection</div>
-     
+
+
+
       <p>Explore our company materials, product brochures and technical datasheets.</p>
+
       <div class="search"><span aria-hidden="true" style="color:#939598;font-size:22px">⌕</span><input id="search"
           placeholder="Search documents and directories..." aria-label="Search documents and directories"><button
           id="clearSearch" type="button">Clear</button></div>
+
       <div class="stats"><span><b>2</b> Corporate files</span><span><b>2</b> Product collections</span><span><b>21</b>
+
           Total documents</span></div>
+
     </div>
+
   </section>
+
   <main class="shell">
+
     <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+
     <div class="section-head">
+
       <div>
+
         <div class="eyebrow" style="color:var(--gray)">Explore the library</div>
+
         <h2 id="heading">Browse Our Resources</h2>
+
         <p id="subheading">Select a document or explore a collection.</p>
+
       </div><span class="pill" id="count"></span>
+
     </div>
+
     <div id="content"></div>
+
     <div class="help">
+
       <div>
+
         <h3>Everything you need, in one place.</h3>
+
         <p>Corporate identity, company brochures, product literature and technical specifications.</p>
+
       </div><span class="note">Organized for easy access ↗</span>
+
     </div>
+
   </main>
+
   <footer class="footer">
+
     <div class="shell"><span>© 2026 R-Build Resource Library</span><span>Corporate Documents · Product Brochures ·
+
         Datasheets</span></div>
+
   </footer>
+
   <div class="modal" id="pdfModal" role="dialog" aria-modal="true" aria-label="PDF preview">
+
     <div class="modal-panel">
+
       <div class="modal-head"><strong id="pdfTitle">Document preview</strong><a id="pdfOpen" href="#" target="_blank"
           rel="noopener">Open PDF ↗</a><button id="closeModal" type="button" aria-label="Close preview">✕</button></div>
+
       <iframe id="pdfFrame" title="PDF Preview"></iframe>
+
       <div class="modal-fallback">Preview not displaying? <a id="pdfFallback" href="#" target="_blank"
           rel="noopener">Open the PDF directly</a>.</div>
+
     </div>
+
   </div>
+
   <script>
+
     // Keep the PDF files beside this HTML file, or update the relative paths below.
+
     const file = (name, description, url = null) => ({ type: 'file', name, description, url });
+
     const folder = (name, description, children) => ({ type: 'folder', name, description, children });
+
     const library = [
+
       file('Business Card', 'Corporate business card', './business-card.pdf'),
+
       file('R-Build Brochure', 'Company overview and capabilities', './R-Build Generic Brochure V3.pdf'),
+
       folder('Expamet', 'Company and product literature', [
+
         file('Expamet Brochure', 'Expamet product brochure', './Expamet Brochure Block work & Plastering Accessories to print.pdf')
+
       ]),
+
       folder('K5', 'Product brochures and technical resources', [
+
         file('K5 Brochure 01', 'K5 product brochure', './1 K5 Brochure Gypsum Board Accessories to print.pdf'),
+
         file('K5 Brochure 02', 'K5 product brochure', './k5 brochure V4 pages.pdf'),
+
         file('K5 Brochure 03', 'K5 product brochure', 'Expamet Brochure Block work & Plastering Accessories to print.pdf'),
+
         folder('K5 Datasheets', 'Technical specifications and product datasheets', Array.from({ length: 15 }, (_, i) => file(`K5 Datasheet ${String(i + 1).padStart(2, '0')}`, 'Technical product datasheet', null)))
+
       ])
+
     ];
+
     let path = []; const $ = id => document.getElementById(id);
+
     const current = () => path.reduce((nodes, index) => nodes[index].children, library);
+
     const fileCount = nodes => nodes.reduce((n, x) => n + (x.type === 'file' ? 1 : fileCount(x.children)), 0);
+
     function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e }
+
     function navigate(index) { path.push(index); $('search').value = ''; render(); window.scrollTo({ top: 320, behavior: 'smooth' }) }
+
     function breadcrumb() { const nav = $('crumbs'); nav.replaceChildren(); const add = (name, depth) => { const b = el('button', '', name); b.onclick = () => { path = path.slice(0, depth); $('search').value = ''; render() }; nav.append(b) }; add('Home', 0); let nodes = library; path.forEach((index, i) => { nav.append(el('span', '', '›')); add(nodes[index].name, i + 1); nodes = nodes[index].children }) }
+
     function section(content, label, items, asGrid) { if (!items.length) return; content.append(el('div', 'section-label', label)); const wrap = el('div', asGrid ? 'grid' : 'file-list'); items.forEach(({ item, index }) => { if (item.type === 'folder') { const card = el('button', 'card'); const top = el('div', 'card-top'); top.append(el('div', 'card-icon', '📁'), el('span', 'card-index', 'COLLECTION')); card.append(top, el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', `${fileCount(item.children)} files`), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => navigate(index); wrap.append(card) } else if (asGrid) { const card = el('button', 'card'); const top = el('div', 'card-top'); top.append(el('div', 'card-icon', '▧'), el('span', 'card-index', 'DOCUMENT')); card.append(top, el('h3', '', item.name), el('p', '', item.description)); const foot = el('div', 'card-foot'); foot.append(el('span', '', item.url ? 'Document · Preview' : 'Coming soon'), el('span', 'circle-arrow', '↗')); card.append(foot); card.onclick = () => openFile(item); wrap.append(card) } else { const row = el('button', 'file-row'); row.append(el('span', 'file-icon', '▧')); const info = el('span', 'file-info'); info.append(el('strong', '', item.name), el('small', '', item.description)); row.append(info, el('span', 'file-action', item.url ? 'Preview ↗' : 'Coming soon')); row.onclick = () => openFile(item); wrap.append(row) } }); content.append(wrap) }
-    function render() { breadcrumb(); const nodes = current(), query = $('search').value.trim().toLowerCase(); const matches = nodes.map((item, index) => ({ item, index })).filter(({ item }) => (item.name + ' ' + item.description).toLowerCase().includes(query)); const atRoot = path.length === 0; let heading = 'Browse Our Resources'; if (!atRoot) { let n = library; for (const i of path) { heading = n[i].name; n = n[i].children } } $('heading').textContent = heading; $('subheading').textContent = atRoot ? 'Select a document or explore a collection.' : 'Browse documents and subdirectories.'; $('count').textContent = matches.length + ' items'; const content = $('content'); content.replaceChildren(); if (!matches.length) { content.append(el('div', 'empty', 'No matching items found in this directory.')); return } if (atRoot) { section(content, 'CORPORATE ESSENTIALS', matches.filter(x => x.item.type === 'file'), true); section(content, 'PRODUCT COLLECTIONS', matches.filter(x => x.item.type === 'folder'), true) } else { section(content, 'DIRECTORIES', matches.filter(x => x.item.type === 'folder'), true); section(content, 'DOCUMENTS', matches.filter(x => x.item.type === 'file'), false) } }
-    function openFile(item) { if (!item.url) { alert('This document has not been added yet.'); return } openPDF(item.url, item.name) }
-    function openPDF(pdfUrl, name = 'PDF Preview') {
-      // Mobile browsers are unreliable at rendering PDF files in iframes.
-      // Navigate directly from the click so mobile popup blockers do not interfere.
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      if (isMobile) { window.location.href = pdfUrl; return }
-      $('pdfTitle').textContent = name; $('pdfFrame').src = pdfUrl; $('pdfOpen').href = pdfUrl; $('pdfFallback').href = pdfUrl; $('pdfModal').classList.add('open'); document.body.style.overflow = 'hidden'; $('closeModal').focus();
+
+    // Search all folders recursively, regardless of the currently open directory.
+    function findAll(nodes, query, parentPath = [], parentNames = []) {
+      const results = [];
+      nodes.forEach((item, index) => {
+        const itemPath = [...parentPath, index];
+        const names = [...parentNames, item.name];
+        const searchable = [item.name, item.description, item.url || '', ...parentNames].join(' ').toLowerCase();
+        if (searchable.includes(query)) results.push({ item, itemPath, names });
+        if (item.type === 'folder') results.push(...findAll(item.children, query, itemPath, names));
+      });
+      return results;
     }
+
+    function showSearchResults(query) {
+      const content = $('content');
+      const results = findAll(library, query);
+      $('heading').textContent = 'Search Results';
+      $('subheading').textContent = 'Matching documents and folders across the entire library.';
+      $('count').textContent = results.length + ' results';
+      content.replaceChildren();
+      if (!results.length) {
+        content.append(el('div', 'empty', 'No matching documents or folders found.'));
+        return;
+      }
+      const wrap = el('div', 'file-list');
+      results.forEach(({ item, itemPath, names }) => {
+        const row = el('button', 'file-row');
+        row.type = 'button';
+        row.append(el('span', 'file-icon', item.type === 'folder' ? '📁' : '▧'));
+        const info = el('span', 'file-info');
+        info.append(el('strong', '', item.name), el('small', '', names.length > 1 ? 'Home / ' + names.join(' / ') : 'Home / ' + item.name));
+        row.append(info, el('span', 'file-action', item.type === 'folder' ? 'Open folder ↗' : item.url ? 'Preview ↗' : 'Coming soon'));
+        row.onclick = () => {
+          if (item.type === 'file') openFile(item);
+          else { path = itemPath; $('search').value = ''; render(); window.scrollTo({ top: 320, behavior: 'smooth' }); }
+        };
+        wrap.append(row);
+      });
+      content.append(wrap);
+    }
+
+    function render() {
+      breadcrumb();
+      const query = $('search').value.trim().toLowerCase();
+      if (query) { showSearchResults(query); return; }
+      const nodes = current();
+      const matches = nodes.map((item, index) => ({ item, index }));
+      const atRoot = path.length === 0;
+      let heading = 'Browse Our Resources';
+      if (!atRoot) { let n = library; for (const i of path) { heading = n[i].name; n = n[i].children; } }
+      $('heading').textContent = heading;
+      $('subheading').textContent = atRoot ? 'Select a document or explore a collection.' : 'Browse documents and subdirectories.';
+      $('count').textContent = matches.length + ' items';
+      const content = $('content'); content.replaceChildren();
+      if (!matches.length) { content.append(el('div', 'empty', 'This directory is empty.')); return; }
+      if (atRoot) {
+        section(content, 'CORPORATE ESSENTIALS', matches.filter(x => x.item.type === 'file'), true);
+        section(content, 'PRODUCT COLLECTIONS', matches.filter(x => x.item.type === 'folder'), true);
+      } else {
+        section(content, 'DIRECTORIES', matches.filter(x => x.item.type === 'folder'), true);
+        section(content, 'DOCUMENTS', matches.filter(x => x.item.type === 'file'), false);
+      }
+    }
+
+    function openFile(item) { if (!item.url) { alert('This document has not been added yet.'); return } openPDF(item.url, item.name) }
+
+    function openPDF(pdfUrl, name = 'PDF Preview') {
+
+      // Mobile browsers are unreliable at rendering PDF files in iframes.
+
+      // Navigate directly from the click so mobile popup blockers do not interfere.
+
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+      if (isMobile) { window.location.href = pdfUrl; return }
+
+      $('pdfTitle').textContent = name; $('pdfFrame').src = pdfUrl; $('pdfOpen').href = pdfUrl; $('pdfFallback').href = pdfUrl; $('pdfModal').classList.add('open'); document.body.style.overflow = 'hidden'; $('closeModal').focus();
+
+    }
+
     function closePDF() { $('pdfModal').classList.remove('open'); $('pdfFrame').removeAttribute('src'); document.body.style.overflow = '' }
+
     $('search').addEventListener('input', render);
+
     $('clearSearch').addEventListener('click', () => { $('search').value = ''; render() });
+
     $('closeModal').addEventListener('click', closePDF);
+
     $('pdfModal').addEventListener('click', e => { if (e.target === $('pdfModal')) closePDF() });
+
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDF() });
+
     $('homeBrand').addEventListener('click', e => { e.preventDefault(); path = []; $('search').value = ''; render() });
+
     render();
+
   </script>
+
 </body>
+
+
 
 </html>
